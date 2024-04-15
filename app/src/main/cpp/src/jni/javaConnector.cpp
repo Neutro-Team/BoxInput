@@ -2,6 +2,7 @@
 #include <android/native_window.h>
 #include <android/native_window_jni.h>
 #include <thread>
+#include <mutex>
 #include "lib.h"
 #include "vulkan/vkMain.h"
 
@@ -15,6 +16,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MyVulkanSurface_in
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MyVulkanSurface_destroyWindow(JNIEnv* env, jclass caller) {
+    deinitMutex.lock();
     if (windowAlive) {
         windowAlive = false;
         if (vulkanAlive) {
@@ -23,6 +25,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MyVulkanSurface_de
         }
         ANativeWindow_release(window);
     }
+    deinitMutex.unlock();
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MainActivity_launchApp(JNIEnv* env, jclass caller) {
@@ -31,6 +34,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MainActivity_launc
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MainActivity_destroyApp(JNIEnv* env, jclass caller) {
+    deinitMutex.lock();
     active = false;
     if (windowAlive) {
         windowAlive = false;
@@ -40,4 +44,5 @@ extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MainActivity_destr
         }
         ANativeWindow_release(window);
     }
+    deinitMutex.unlock();
 }
