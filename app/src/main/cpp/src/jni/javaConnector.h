@@ -4,6 +4,7 @@
 #include <android/native_window.h>
 
 extern bool windowAlive;
+extern bool vulkanAlive;
 extern ANativeWindow* window;
 
 #endif
