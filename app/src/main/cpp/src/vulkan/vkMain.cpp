@@ -7,5 +7,5 @@ void vkInit() {
 }
 
 void vkDestroy() {
-
+    // vkDeviceWaitIdle() need to be used here (no logical device rn)
 }
