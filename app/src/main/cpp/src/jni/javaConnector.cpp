@@ -45,8 +45,5 @@ extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MainActivity_destr
         }
         ANativeWindow_release(window);
     }
-<<<<<<< HEAD
     deinitMutex.unlock();
-=======
->>>>>>> a5416b2d22950b6472f2c1109c493074cab5f1ad
 }
