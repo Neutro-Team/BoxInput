@@ -15,6 +15,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MyVulkanSurface_in
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_cucumbers_boxinput_MyVulkanSurface_destroyWindow(JNIEnv* env, jclass caller) {
+    active = false;
     if (windowAlive) {
         windowAlive = false;
         if (vulkanAlive) {
