@@ -7,7 +7,7 @@ PFN_vkEnumerateInstanceLayerProperties vkEnumerateInstanceLayerProperties;
 PFN_vkCreateInstance vkCreateInstance;
 
 void loadGetInstanceProcAddr() {
-    void* libvulkan = dlopen("libvulkan.so", RTLD_NOW);
+    void* libvulkan = dlopen("libvulkan.so", RTLD_LAZY);
     vkGetInstanceProcAddr = (PFN_vkGetInstanceProcAddr)dlsym(libvulkan, "vkGetInstanceProcAddr");
     dlclose(libvulkan);
 }
