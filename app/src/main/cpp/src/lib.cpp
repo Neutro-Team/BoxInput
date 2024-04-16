@@ -1,9 +1,8 @@
 #include <vulkan/vulkan.h>
 #include "vulkan/vkMain.h"
-#include <android/native_window.h>
-#include "jni/javaConnector.h"
 
 bool active = true;
+bool vulkanReady = false;
 
 // entry point of the app
 void entry() {

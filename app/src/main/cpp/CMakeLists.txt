@@ -10,6 +10,8 @@ find_library(androidlib NAMES android)
 set(SOURCES
         src/vulkan/vkMain.cpp
         src/vulkan/vkFunctions.cpp
+        src/vulkan/vkInstance.cpp
+        src/vulkan/vkSurface.cpp
         src/jni/javaConnector.cpp
         src/lib.cpp
 )
